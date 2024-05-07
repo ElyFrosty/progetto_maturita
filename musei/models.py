@@ -25,7 +25,7 @@ class Opera(models.Model):
     anno= models.CharField(max_length=4)
     tipo= models.CharField(max_length=10)
     materiale= models.CharField(max_length=30)
-    autore= models.models.ForeignKey(Autore, on_delete=models.CASCADE, related_name="opere")
+    autore= models.ForeignKey(Autore, on_delete=models.CASCADE, related_name="opere")
 
     def __str__(self):
         return self.nomeOp
