@@ -1,7 +1,17 @@
-{% extends "base.html"%}
+{% extends "base.html" %}
 
-{%block title%} {{block.super}} | Homepage {% endblock title%}
+{%block title%} Musei {%endblock title%}
+
 {%block content%}
-<h1>Benvenuto</h1>
+    <h2>Musei:</h2>
+    {%for museo in musei%}
+        <p>
+            <strong><a href="/musei/{{museo.id}}">{{museo.nome}}</a></strong> <br>
+            <strong>{{museo.citta}}</strong> <br>
+            <strong>{{museo.stato}}</strong> <br>
+        </p>
 
-{% endblock content%}
+        <hr>
+    {% endfor %}
+
+{%endblock content%}

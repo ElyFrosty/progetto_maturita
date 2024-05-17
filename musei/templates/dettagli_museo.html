@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{%block title%} {{museo.nome}} {%endblock title%}
+
+{%block content%}
+    <h1>{{museo.nome}}</h1> <br>
+    <h3>{{museo.citta}}, {{museo.stato}}</h3>
+    <h5>Opere importanti: </h5>
+    {%for opera in opere%}
+        <h2><strong>{{opera.nomeOp}}</strong></h2> <br>
+        <img src="{{ opera.img.url }}" alt="{{ opera.nomeOp }}" /> <br>
+        <p><a href={%url 'musei:dettagli_autore' opera.autore.id%}>{{opera.autore}}</a>, {{opera.anno}}, {{opera.tipo}} {{opera.materiale}}</p>
+        <hr>
+    {% endfor %}
+
+{%endblock content%}

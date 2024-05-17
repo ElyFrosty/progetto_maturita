@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{%block title%} {{autore.nome}} {{autore.cognome}}{%endblock title%}
+
+{%block content%}
+    <h1>{{autore.nome}} {{autore.cognome}}</h1> <br>
+    <h4>Nato il {{autore.annoNascita}}, Morto il {{autore.annoMorte}}</h4>
+    <h5>Biografia: {{autore.biografia}}</h5>
+
+{%endblock content%}

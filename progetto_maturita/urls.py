@@ -16,14 +16,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import index_root
+from .views import MyLoginView, index_root
+from django.conf import settings
+from django.conf.urls.static import static
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index_root, name='index_root'),
+    path('', include('musei.urls', namespace='musei')),
+    path('', index_root, name='homepage'),
+    path('accounts/login/', MyLoginView.as_view(), name='login'),
 ]
 
 #Add Django site authentication urls (for login, logout, password management)
 urlpatterns += [
     path('accounts/', include('django.contrib.auth.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
